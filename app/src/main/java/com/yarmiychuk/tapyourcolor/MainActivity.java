@@ -30,8 +30,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    //final String LOG_TAG = "MainActivity";
-
     // Constants for colors
     static final int COLOR_WHITE = 0, COLOR_RED = 1, COLOR_YELLOW = 2,
             COLOR_GREEN = 3, COLOR_BLUE = 4;
@@ -769,6 +767,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     colorDefaultB = whichColor;
                 }
+                saveSettings();
                 invalidateUI();
             }
         });
