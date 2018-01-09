@@ -769,6 +769,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     colorDefaultB = whichColor;
                 }
+                saveSettings();
                 invalidateUI();
             }
         });
