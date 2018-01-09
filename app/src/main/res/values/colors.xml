@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorAccent">#FF5722</color>
+
+    <!-- Game colors -->
+    <color name="colorRed">#E53935</color>
+    <color name="colorBlue">#1E88E5</color>
+    <color name="colorGreen">#689F38</color>
+    <color name="colorYellow">#FDD835</color>
+    <color name="colorButtonPressed">#B0BEC5</color>
+    <color name="colorWhite">#FFFFFF</color>
+</resources>

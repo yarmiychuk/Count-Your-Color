@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="MainActivity">
+
+    <!-- Game space -->
+    <include layout="@layout/game_layout" />
+
+    <!-- Congratulations screen -->
+    <include layout="@layout/win_layout" />
+
+    <!-- Linear layout contained a game menu -->
+    <include layout="@layout/menu_layout" />
+
+    <!-- Settings Screen -->
+    <include layout="@layout/settings_layout" />
+
+</RelativeLayout>
