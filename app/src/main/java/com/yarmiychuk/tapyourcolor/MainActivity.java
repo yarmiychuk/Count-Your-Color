@@ -33,8 +33,14 @@ public class MainActivity extends AppCompatActivity {
     // Constants for colors
     static final int COLOR_WHITE = 0, COLOR_RED = 1, COLOR_YELLOW = 2,
             COLOR_GREEN = 3, COLOR_BLUE = 4;
-    // Constants for App UI mode
+    // Constants and variable for App UI mode
     final int MODE_MENU = 0, MODE_GAME = 1, MODE_SETTINGS = 2;
+    // Constants for app's SharedPreferences
+    final String SP_IS_PLAYING_NOW = "isPlayingNow",
+            SP_SCORE_PLAYER_A = "scorePlayerA", SP_SCORE_PLAYER_B = "scorePlayerB",
+            SP_COLOR_PLAYER_A = "colorPlayerA", SP_COLOR_PLAYER_B = "colorPlayerB",
+            SP_COLOR_DEFAULT_A = "colorDefaultA", SP_COLOR_DEFAULT_B = "colorDefaultB",
+            SP_NAME_PLAYER_A = "namePlayerA", SP_NAME_PLAYER_B = "namePlayerB";
     private int mode;
     // Player's names
     private String namePlayerA, namePlayerB;
@@ -49,11 +55,36 @@ public class MainActivity extends AppCompatActivity {
     private int[] cellsBackground = new int[16];
     // GridAdapter
     private GridAdapter adapter;
+    // GameViews
+    private LinearLayout llMenu, llGameName, llWin;
+    private ScrollView svSettings;
+    private GridView gvGame;
+    private EditText etNamePlayerA, etNamePlayerB;
+    private Button btnStartGame, btnSettingsOrRestart;
+    private TextView tvNamePlayerA, tvNamePlayerB,
+            tvColorPlayerA, tvColorPlayerB,
+            tvScoreA, tvScoreB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Define views
+        llMenu = findViewById(R.id.ll_game_menu);
+        llGameName = findViewById(R.id.ll_game_name);
+        llWin = findViewById(R.id.ll_game_win);
+        svSettings = findViewById(R.id.sv_settings);
+        gvGame = findViewById(R.id.game_grid_view);
+        etNamePlayerA = findViewById(R.id.et_name_player_a);
+        etNamePlayerB = findViewById(R.id.et_name_player_b);
+        btnStartGame = findViewById(R.id.btn_start_game);
+        btnSettingsOrRestart = findViewById(R.id.btn_settings_reset);
+        tvNamePlayerA = findViewById(R.id.tv_player_name_a);
+        tvNamePlayerB = findViewById(R.id.tv_player_name_b);
+        tvColorPlayerA = findViewById(R.id.tv_color_player_a);
+        tvColorPlayerB = findViewById(R.id.tv_color_player_b);
+        tvScoreA = findViewById(R.id.tv_score_a);
+        tvScoreB = findViewById(R.id.tv_score_b);
         // Prepare GridView
         initializeGridView();
         // Set default game mode
@@ -122,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     private void hideSoftKeyboard() {
         InputMethodManager inputMethodManager = (InputMethodManager)
                 getSystemService(INPUT_METHOD_SERVICE);
-        if(getCurrentFocus() != null && inputMethodManager != null) {
+        if (getCurrentFocus() != null && inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
     }
@@ -141,15 +172,15 @@ public class MainActivity extends AppCompatActivity {
     private void saveGameState() {
         SharedPreferences.Editor editor = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext()).edit();
-        editor.putBoolean("isPlayingNow", isPlayingNow);
-        editor.putInt("scorePlayerA", scorePlayerA);
-        editor.putInt("scorePlayerB", scorePlayerB);
-        editor.putInt("colorPlayerA", colorPlayerA);
-        editor.putInt("colorPlayerB", colorPlayerB);
-        editor.putInt("colorDefaultA", colorDefaultA);
-        editor.putInt("colorDefaultB", colorDefaultB);
-        editor.putString("namePlayerA", namePlayerA);
-        editor.putString("namePlayerB", namePlayerB);
+        editor.putBoolean(SP_IS_PLAYING_NOW, isPlayingNow);
+        editor.putInt(SP_SCORE_PLAYER_A, scorePlayerA);
+        editor.putInt(SP_SCORE_PLAYER_B, scorePlayerB);
+        editor.putInt(SP_COLOR_PLAYER_A, colorPlayerA);
+        editor.putInt(SP_COLOR_PLAYER_B, colorPlayerB);
+        editor.putInt(SP_COLOR_DEFAULT_A, colorDefaultA);
+        editor.putInt(SP_COLOR_DEFAULT_B, colorDefaultB);
+        editor.putString(SP_NAME_PLAYER_A, namePlayerA);
+        editor.putString(SP_NAME_PLAYER_B, namePlayerB);
         editor.apply();
     }
 
@@ -158,23 +189,23 @@ public class MainActivity extends AppCompatActivity {
      */
     private void readGameState() {
         SharedPreferences mSet = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        isPlayingNow = mSet.getBoolean("isPlayingNow", false);
-        scorePlayerA = mSet.getInt("scorePlayerA", 0);
-        scorePlayerB = mSet.getInt("scorePlayerB", 0);
-        colorPlayerA = mSet.getInt("colorPlayerA", 0);
-        colorPlayerB = mSet.getInt("colorPlayerB", 0);
-        colorDefaultA = mSet.getInt("colorDefaultA", 0);
-        colorDefaultB = mSet.getInt("colorDefaultB", 0);
-        namePlayerA = mSet.getString("namePlayerA", "");
-        namePlayerB = mSet.getString("namePlayerB", "");
+        isPlayingNow = mSet.getBoolean(SP_IS_PLAYING_NOW, false);
+        scorePlayerA = mSet.getInt(SP_SCORE_PLAYER_A, 0);
+        scorePlayerB = mSet.getInt(SP_SCORE_PLAYER_B, 0);
+        colorPlayerA = mSet.getInt(SP_COLOR_PLAYER_A, 0);
+        colorPlayerB = mSet.getInt(SP_COLOR_PLAYER_B, 0);
+        colorDefaultA = mSet.getInt(SP_COLOR_DEFAULT_A, 0);
+        colorDefaultB = mSet.getInt(SP_COLOR_DEFAULT_B, 0);
+        namePlayerA = mSet.getString(SP_NAME_PLAYER_A, "");
+        namePlayerB = mSet.getString(SP_NAME_PLAYER_B, "");
     }
 
     /**
      * Save game settings
      */
     private void saveSettings() {
-        namePlayerA = convertTextFromEditText((EditText) findViewById(R.id.et_name_player_a));
-        namePlayerB = convertTextFromEditText((EditText) findViewById(R.id.et_name_player_b));
+        namePlayerA = convertTextFromEditText(etNamePlayerA);
+        namePlayerB = convertTextFromEditText(etNamePlayerB);
         saveGameState();
     }
 
@@ -199,9 +230,8 @@ public class MainActivity extends AppCompatActivity {
             cellSize = cellHeight;
         }
         // Reset adapter for GridView
-        GridView gridView = findViewById(R.id.game_grid_view);
         adapter = new GridAdapter(getApplicationContext(), cellsBackground, cellSize);
-        gridView.setAdapter(adapter);
+        gvGame.setAdapter(adapter);
     }
 
     /**
@@ -210,25 +240,20 @@ public class MainActivity extends AppCompatActivity {
     private void invalidateUI() {
         // Hide keyboard, if it open
         hideSoftKeyboard();
-        LinearLayout llMenu = findViewById(R.id.ll_game_menu);
-        LinearLayout llWin = findViewById(R.id.ll_game_win);
-        ScrollView svSettings = findViewById(R.id.sv_settings);
         switch (mode) {
             case MODE_MENU:
                 llMenu.setVisibility(View.VISIBLE);
                 svSettings.setVisibility(View.INVISIBLE);
                 llWin.setVisibility(View.INVISIBLE);
                 invalidatePlayersColorAndName();
-                Button buttonStartGame = findViewById(R.id.btn_start_game);
-                Button buttonSettingsOrRestart = findViewById(R.id.btn_settings_reset);
                 if (!isPlayingNow) {
                     // Game not started
-                    buttonStartGame.setText(getString(R.string.start_new_game));
-                    buttonSettingsOrRestart.setText(getString(R.string.settings));
+                    btnStartGame.setText(getString(R.string.start_new_game));
+                    btnSettingsOrRestart.setText(getString(R.string.settings));
                 } else {
                     // Game just paused
-                    buttonStartGame.setText(getString(R.string.continue_game));
-                    buttonSettingsOrRestart.setText(getString(R.string.reset_game));
+                    btnStartGame.setText(getString(R.string.continue_game));
+                    btnSettingsOrRestart.setText(getString(R.string.reset_game));
                 }
                 showAppName();
                 break;
@@ -242,20 +267,21 @@ public class MainActivity extends AppCompatActivity {
                 llWin.setVisibility(View.INVISIBLE);
                 svSettings.setVisibility(View.VISIBLE);
                 // Fill name for player A
-                fillEditText((EditText) findViewById(R.id.et_name_player_a), namePlayerA);
+                fillEditText(etNamePlayerA, namePlayerA);
                 // Fill name for player B
-                fillEditText((EditText) findViewById(R.id.et_name_player_b), namePlayerB);
+                fillEditText(etNamePlayerB, namePlayerB);
                 // Set background for color TextView A
-                setBackgroundOfView(findViewById(R.id.tv_color_player_a), colorDefaultA);
+                setBackgroundOfView(tvColorPlayerA, colorDefaultA);
                 // Set background for color TextView B
-                setBackgroundOfView(findViewById(R.id.tv_color_player_b), colorDefaultB);
+                setBackgroundOfView(tvColorPlayerB, colorDefaultB);
         }
     }
 
     /**
      * Fill EditText saved player's name or left it blank if name is default
+     *
      * @param editText to fill
-     * @param name of player
+     * @param name     of player
      */
     private void fillEditText(EditText editText, String name) {
         if (isNameLikeDefault(name)) {
@@ -267,7 +293,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Set background Of View
-     * @param view - selected view
+     *
+     * @param view  - selected view
      * @param color or background
      */
     private void setBackgroundOfView(View view, int color) {
@@ -301,7 +328,6 @@ public class MainActivity extends AppCompatActivity {
      * Shows name of app in the menu
      */
     private void showAppName() {
-        LinearLayout llGameName = findViewById(R.id.ll_game_name);
         llGameName.removeAllViews();
         LayoutInflater inflater = getLayoutInflater();
         String appName = getString(R.string.app_name);
@@ -333,8 +359,8 @@ public class MainActivity extends AppCompatActivity {
     private void prepareGameSpace() {
         changeButtonsColor();
         initializeGridView();
-        updateScoreTextViewA();
-        updateScoreTextViewB();
+        updateScoreTextView(tvScoreA, scorePlayerA);
+        updateScoreTextView(tvScoreB, scorePlayerB);
         replaceCellsColor(colorPlayerA);
         replaceCellsColor(colorPlayerB);
     }
@@ -345,22 +371,18 @@ public class MainActivity extends AppCompatActivity {
     private void resetScore() {
         scorePlayerA = 0;
         scorePlayerB = 0;
-        updateScoreTextViewA();
-        updateScoreTextViewB();
+        updateScoreTextView(tvScoreA, scorePlayerA);
+        updateScoreTextView(tvScoreB, scorePlayerB);
     }
 
     /**
-     * Update score Player A at TextView
+     * Update score TextViews
+     *
+     * @param textView - to set new score value
+     * @param score    - new score
      */
-    private void updateScoreTextViewA() {
-        ((TextView) findViewById(R.id.tv_score_a)).setText(String.valueOf(scorePlayerA));
-    }
-
-    /**
-     * Update score Player B at TextView
-     */
-    private void updateScoreTextViewB() {
-        ((TextView) findViewById(R.id.tv_score_b)).setText(String.valueOf(scorePlayerB));
+    private void updateScoreTextView(TextView textView, int score) {
+        textView.setText(String.valueOf(score));
     }
 
     /**
@@ -385,6 +407,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Define random game color for player
+     *
      * @param excludeColor color to exclude
      * @return color from 1 to 4 without excluded
      */
@@ -398,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Method convert constant to resource color
+     *
      * @param color - app constant
      * @return color from resources
      */
@@ -419,26 +443,24 @@ public class MainActivity extends AppCompatActivity {
      * Initialize players names from settings or defaults
      */
     private void initializePlayersNames() {
-        if (namePlayerA.equals("") || isNameLikeDefault(namePlayerA)) {
-            namePlayerA = setDefaultPlayerName(colorPlayerA);
-        }
         if (namePlayerB.equals("") || isNameLikeDefault(namePlayerB)) {
-            namePlayerB = setDefaultPlayerName(colorPlayerB);
+            namePlayerB = getDefaultPlayerName(colorPlayerB);
         }
-        TextView tvNamePlayerA = findViewById(R.id.tv_player_name_a);
+        // Update TextView for player A
         tvNamePlayerA.setText(namePlayerA);
         tvNamePlayerA.setTextColor(getResourceColor(colorPlayerA));
-        TextView tvNamePlayerB = findViewById(R.id.tv_player_name_b);
+        // Update TextView for player B
         tvNamePlayerB.setText(namePlayerB);
         tvNamePlayerB.setTextColor(getResourceColor(colorPlayerB));
     }
 
     /**
      * Method set the default player names
+     *
      * @param color - Color of player
      * @return default name of player
      */
-    private String setDefaultPlayerName(int color) {
+    private String getDefaultPlayerName(int color) {
         String name = "";
         switch (color) {
             case COLOR_RED:
@@ -485,7 +507,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Set button colors according to the motion event
-     * @param view - button to set color
+     *
+     * @param view  - button to set color
      * @param color - color constant of not-pressed button
      */
     private void setButtonColor(final View view, int color) {
@@ -508,6 +531,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Get new score for player A after turn
+     *
      * @param view what was clicked
      */
     public void onClickButtonA(View view) {
@@ -524,9 +548,9 @@ public class MainActivity extends AppCompatActivity {
                     scorePlayerA += getScoreForTurn(3, countCellsA == 3);
             }
             if (scorePlayerA < 0) {
-                scorePlayerA =0;
+                scorePlayerA = 0;
             }
-            updateScoreTextViewA();
+            updateScoreTextView(tvScoreA, scorePlayerA);
             replaceCellsColor(colorPlayerA);
             checkForEndOfGame();
         }
@@ -534,6 +558,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Get new score for player B after turn
+     *
      * @param view what was clicked
      */
     public void onClickButtonB(View view) {
@@ -552,7 +577,7 @@ public class MainActivity extends AppCompatActivity {
             if (scorePlayerB < 0) {
                 scorePlayerB = 0;
             }
-            updateScoreTextViewB();
+            updateScoreTextView(tvScoreB, scorePlayerB);
             replaceCellsColor(colorPlayerB);
             checkForEndOfGame();
         }
@@ -560,6 +585,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Get count of cells for special Color
+     *
      * @param color - required color
      * @return count of cells required color
      */
@@ -576,7 +602,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Get score for this turn
-     * @param scoreValue - points for this turn
+     *
+     * @param scoreValue    - points for this turn
      * @param isRightChoice - Player choice was right or not
      * @return score for this turn
      */
@@ -590,6 +617,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Replace special color in cells
+     *
      * @param colorToReplace - color to replace
      */
     private void replaceCellsColor(int colorToReplace) {
@@ -607,6 +635,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Generate random int
+     *
      * @param maxValue - max value
      * @return generated random int
      */
@@ -616,10 +645,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Crear special color
+     *
      * @param colorToClear what color need to clean
      */
     private void clearCellsColor(int colorToClear) {
-        for (int i =0; i < 16; i++) {
+        for (int i = 0; i < 16; i++) {
             if (cellsBackground[i] == colorToClear) {
                 cellsBackground[i] = 0;
             }
@@ -633,7 +663,6 @@ public class MainActivity extends AppCompatActivity {
     private void checkForEndOfGame() {
         if (scorePlayerA >= 50 || scorePlayerB >= 50) {
             isPlayingNow = false;
-            LinearLayout llWin = findViewById(R.id.ll_game_win);
             llWin.setVisibility(View.VISIBLE);
             // Define view
             TextView gameResultA = findViewById(R.id.tv_game_result_a);
@@ -663,6 +692,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Start new game or resume saved game
+     *
      * @param view button
      */
     public void onClickStartResume(View view) {
@@ -679,6 +709,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Open settings of app or reset game
+     *
      * @param view button
      */
     public void onClickSettingsOrReset(View view) {
@@ -705,6 +736,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Show dialog with "How to play" info
+     *
      * @param view button
      */
     public void onClickAbout(View view) {
@@ -722,6 +754,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Quit app
+     *
      * @param view button
      */
     public void onClickExit(View view) {
@@ -730,6 +763,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Remove unused space from text in EditText
+     *
      * @param editText to get text
      * @return text without space at begin and end of text
      */
@@ -750,6 +784,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Select color for Player A or B
+     *
      * @param view - selected view
      */
     public void onClickSelectColor(final View view) {
@@ -785,6 +820,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Reset settings to default and return to menu
+     *
      * @param view - reset button
      */
     public void onClickResetSettings(View view) {
@@ -792,14 +828,15 @@ public class MainActivity extends AppCompatActivity {
         colorDefaultB = 0;
         namePlayerA = "";
         namePlayerB = "";
-        ((EditText) findViewById(R.id.et_name_player_a)).setText(namePlayerA);
-        ((EditText) findViewById(R.id.et_name_player_b)).setText(namePlayerB);
+        etNamePlayerA.setText(namePlayerA);
+        etNamePlayerB.setText(namePlayerB);
         saveSettings();
         invalidateUI();
     }
 
     /**
      * Save settings and go to menu
+     *
      * @param view - "Done" button
      */
     public void onclickDoneSettings(View view) {
