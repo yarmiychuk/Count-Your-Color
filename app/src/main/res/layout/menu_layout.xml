@@ -6,9 +6,9 @@
     android:background="@color/colorPrimaryDark"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp">
+    android:paddingLeft="@dimen/standard_padding"
+    android:paddingRight="@dimen/standard_padding"
+    android:paddingTop="@dimen/standard_padding">
 
     <ImageView
         android:layout_width="match_parent"
@@ -22,8 +22,8 @@
         android:id="@+id/ll_game_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin"
         android:animateLayoutChanges="true"
         android:gravity="center"
         android:orientation="horizontal" />
@@ -31,7 +31,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -46,8 +46,8 @@
         <TextView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:gravity="center"
             android:text="@string/versus"
             android:textColor="@color/colorAccent"
@@ -65,9 +65,9 @@
 
     <Button
         android:id="@+id/btn_start_game"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="@dimen/menu_button_width"
+        android:layout_height="@dimen/menu_button_height"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:background="@drawable/background_red"
         android:onClick="onClickStartResume"
         android:text="@string/start_new_game"
@@ -75,27 +75,27 @@
 
     <Button
         android:id="@+id/btn_settings_reset"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="@dimen/menu_button_width"
+        android:layout_height="@dimen/menu_button_height"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:background="@drawable/background_yellow"
         android:onClick="onClickSettingsOrReset"
         android:text="@string/settings"
         android:textColor="@android:color/black" />
 
     <Button
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="@dimen/menu_button_width"
+        android:layout_height="@dimen/menu_button_height"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:background="@drawable/backgournd_green"
         android:onClick="onClickAbout"
         android:text="@string/how_to_play"
         android:textColor="@android:color/black" />
 
     <Button
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="@dimen/menu_button_width"
+        android:layout_height="@dimen/menu_button_height"
+        android:layout_marginBottom="@dimen/standard_margin"
         android:background="@drawable/background_blue"
         android:onClick="onClickExit"
         android:text="@string/exit"

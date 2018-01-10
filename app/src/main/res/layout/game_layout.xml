@@ -12,60 +12,60 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="@dimen/standard_padding">
 
         <Button
             android:id="@+id/button_b_3"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonB"
             android:rotation="180"
             android:text="@string/button_label_three"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
         <Button
             android:id="@+id/button_b_2"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonB"
             android:rotation="180"
             android:text="@string/button_label_two"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
         <Button
             android:id="@+id/button_b_1"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonB"
             android:rotation="180"
             android:text="@string/button_label_one"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
         <TextView
             android:id="@+id/tv_score_b"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:gravity="center"
             android:rotation="180"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/game_views_text_size"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -102,57 +102,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:padding="16dp">
+        android:padding="@dimen/standard_padding">
 
         <TextView
             android:id="@+id/tv_score_a"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
+            android:textSize="@dimen/game_views_text_size"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_a_1"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonA"
             android:text="@string/button_label_one"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
         <Button
             android:id="@+id/button_a_2"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonA"
             android:text="@string/button_label_two"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
         <Button
             android:id="@+id/button_a_3"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_marginLeft="@dimen/small_horizontal_margin"
+            android:layout_marginRight="@dimen/small_horizontal_margin"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="onClickButtonA"
             android:text="@string/button_label_three"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="@dimen/game_views_text_size" />
 
     </LinearLayout>
 

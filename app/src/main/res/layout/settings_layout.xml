@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:padding="16dp">
+    android:padding="@dimen/standard_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,8 +64,8 @@
                     android:id="@+id/tv_color_player_a"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginStart="@dimen/standard_margin"
                     android:background="@color/colorAccent"
                     android:onClick="onClickSelectColor" />
             </LinearLayout>
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/standard_margin"
                 android:gravity="start"
                 android:text="@string/player_b"
                 android:textColor="@color/colorAccent"
@@ -101,8 +101,8 @@
                     android:id="@+id/tv_color_player_b"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginStart="@dimen/standard_margin"
                     android:background="@color/colorAccent"
                     android:onClick="onClickSelectColor" />
             </LinearLayout>
@@ -113,7 +113,7 @@
             style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16sp"
+            android:layout_marginTop="@dimen/standard_margin"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -124,8 +124,8 @@
 
             <Button
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="@dimen/menu_button_height"
                 android:background="@drawable/background_accent"
                 android:onClick="onClickResetSettings"
                 android:text="@string/reset"
@@ -138,8 +138,8 @@
 
             <Button
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="@dimen/menu_button_height"
                 android:background="@drawable/background_accent"
                 android:onClick="onclickDoneSettings"
                 android:text="@string/done"
