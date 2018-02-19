@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,6 +6,160 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Menu Button Style -->
+    <style name="MyMenuButtonStyle">
+        <item name="android:layout_width">@dimen/menu_button_width</item>
+        <item name="android:layout_height">@dimen/menu_button_height</item>
+        <item name="android:layout_marginBottom">@dimen/standard_margin</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- Game Button Style -->
+    <style name="MyGameButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/game_button_height</item>
+        <item name="android:layout_marginLeft">@dimen/small_margin</item>
+        <item name="android:layout_marginRight">@dimen/small_margin</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/game_views_text_size</item>
+    </style>
+
+    <style name="MyGameButtonStyle.PlayerB">
+        <item name="android:rotation">@dimen/player_b_rotation</item>
+    </style>
+
+    <style name="MyPlayerNameTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/player_menu_name_text_size</item>
+    </style>
+
+    <!-- TextView Style -->
+    <style name="MyTextViewStyle">
+        <item name="android:layout_width">@dimen/game_text_view_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/small_margin</item>
+        <item name="android:layout_marginRight">@dimen/small_margin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/game_views_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Players Button Bar Layout Style -->
+    <style name="MyPlayerLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/standard_padding</item>
+    </style>
+
+    <!-- Settings Color Picker Style -->
+    <style name="MyColorPickerTextViewStyle">
+        <item name="android:layout_width">@dimen/color_picker_text_view_size</item>
+        <item name="android:layout_height">@dimen/color_picker_text_view_size</item>
+        <item name="android:layout_marginLeft">@dimen/standard_margin</item>
+        <item name="android:layout_marginStart" tools:targetApi="jelly_bean_mr1">
+            @dimen/standard_margin
+        </item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:onClick">onClickSelectColor</item>
+    </style>
+
+    <!-- Settings Button Style -->
+    <style name="MySettingsButtonStyle">
+        <item name="android:layout_width">@dimen/settings_button_width</item>
+        <item name="android:layout_height">@dimen/menu_button_height</item>
+        <item name="android:background">@drawable/background_accent</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- Style for TextView that using as divider -->
+    <style name="MyTextViewAsDividerStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Style for Settings titles TextView -->
+    <style name="MySettingsTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Style of User name captions -->
+    <style name="MySettingsNameTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/settings_name_text_size</item>
+    </style>
+
+    <!-- Style of EditText for user names input -->
+    <style name="MyEditTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">@string/name_hint</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">textPersonName|textCapWords</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/settings_name_text_size</item>
+    </style>
+
+    <!-- Win Relative Layout Style -->
+    <style name="MyRelativeLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/background_white</item>
+        <item name="android:padding">@dimen/small_padding</item>
+    </style>
+
+    <!-- Win TextView style-->
+    <style name="MyWinTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="MyWinTextViewStyle.Continue">
+        <item name="android:text">@string/click_finish</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/smallest_text_size</item>
+    </style>
+
+    <style name="MyWinTextViewStyle.Score">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:text">@string/your_score</item>
+        <item name="android:textSize">@dimen/win_score_text_size</item>
+    </style>
+
+    <style name="MyWinTextViewStyle.Win">
+        <item name="android:text">@string/you_win</item>
+        <item name="android:textSize">@dimen/congratulation_text_size</item>
+    </style>
+
+    <!-- Finish Caption TextView style-->
+    <style name="MyFinishTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/game_button_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/finish</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/settings_name_text_size</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

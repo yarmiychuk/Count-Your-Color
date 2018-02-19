@@ -37,68 +37,50 @@
 
         <TextView
             android:id="@+id/tv_player_name_a"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:textSize="20sp" />
+            style="@style/MyPlayerNameTextViewStyle"
+            android:gravity="end" />
 
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_width="@dimen/vs_text_view_size"
+            android:layout_height="@dimen/vs_text_view_size"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginRight="@dimen/small_margin"
             android:gravity="center"
             android:text="@string/versus"
             android:textColor="@color/colorAccent"
-            android:textSize="28sp" />
+            android:textSize="@dimen/vs_text_size" />
 
         <TextView
             android:id="@+id/tv_player_name_b"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:textSize="20sp" />
+            style="@style/MyPlayerNameTextViewStyle"
+            android:gravity="start" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_start_game"
-        android:layout_width="@dimen/menu_button_width"
-        android:layout_height="@dimen/menu_button_height"
-        android:layout_marginBottom="@dimen/standard_margin"
+        style="@style/MyMenuButtonStyle"
         android:background="@drawable/background_red"
         android:onClick="onClickStartResume"
-        android:text="@string/start_new_game"
-        android:textColor="@android:color/black" />
+        android:text="@string/start_new_game" />
 
     <Button
         android:id="@+id/btn_settings_reset"
-        android:layout_width="@dimen/menu_button_width"
-        android:layout_height="@dimen/menu_button_height"
-        android:layout_marginBottom="@dimen/standard_margin"
+        style="@style/MyMenuButtonStyle"
         android:background="@drawable/background_yellow"
         android:onClick="onClickSettingsOrReset"
-        android:text="@string/settings"
-        android:textColor="@android:color/black" />
+        android:text="@string/settings" />
 
     <Button
-        android:layout_width="@dimen/menu_button_width"
-        android:layout_height="@dimen/menu_button_height"
-        android:layout_marginBottom="@dimen/standard_margin"
+        style="@style/MyMenuButtonStyle"
         android:background="@drawable/backgournd_green"
         android:onClick="onClickAbout"
-        android:text="@string/how_to_play"
-        android:textColor="@android:color/black" />
+        android:text="@string/how_to_play" />
 
     <Button
-        android:layout_width="@dimen/menu_button_width"
-        android:layout_height="@dimen/menu_button_height"
-        android:layout_marginBottom="@dimen/standard_margin"
+        style="@style/MyMenuButtonStyle"
         android:background="@drawable/background_blue"
         android:onClick="onClickExit"
-        android:text="@string/exit"
-        android:textColor="@android:color/black" />
+        android:text="@string/exit" />
 
 </LinearLayout>

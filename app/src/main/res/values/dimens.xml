@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Margins and padding -->
-    <dimen name="small_horizontal_margin">8dp</dimen>
     <dimen name="standard_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
     <dimen name="standard_padding">16dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="smallest_padding">4dp</dimen>
 
     <!-- Heights and width -->
     <dimen name="game_button_height">50dp</dimen>
     <dimen name="settings_button_width">100dp</dimen>
     <dimen name="menu_button_width">200dp</dimen>
     <dimen name="menu_button_height">40dp</dimen>
+    <dimen name="game_text_view_width">70dp</dimen>
+    <dimen name="vs_text_view_size">50dp</dimen>
+    <dimen name="color_picker_text_view_size">40dp</dimen>
+    <dimen name="divider_width">1dp</dimen>
 
     <!-- Text sizes -->
+    <dimen name="congratulation_text_size">50sp</dimen>
+    <dimen name="win_score_text_size">40sp</dimen>
+    <dimen name="settings_title_text_size">34sp</dimen>
+    <dimen name="settings_subtitle_text_size">30sp</dimen>
     <dimen name="game_views_text_size">30sp</dimen>
+    <dimen name="vs_text_size">28sp</dimen>
+    <dimen name="settings_name_text_size">22sp</dimen>
+    <dimen name="player_menu_name_text_size">20sp</dimen>
+    <dimen name="smallest_text_size">16sp</dimen>
+
+    <!-- Views rotation for player B -->
+    <dimen name="player_b_rotation">180</dimen>
 
 </resources>

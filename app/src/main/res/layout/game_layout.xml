@@ -7,66 +7,30 @@
     android:orientation="vertical">
 
     <!-- LinearLayout for Player B buttons score TextView -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/standard_padding">
+    <LinearLayout style="@style/MyPlayerLayoutStyle">
 
         <Button
             android:id="@+id/button_b_3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle.PlayerB"
             android:onClick="onClickButtonB"
-            android:rotation="180"
-            android:text="@string/button_label_three"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_three" />
 
         <Button
             android:id="@+id/button_b_2"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle.PlayerB"
             android:onClick="onClickButtonB"
-            android:rotation="180"
-            android:text="@string/button_label_two"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_two" />
 
         <Button
             android:id="@+id/button_b_1"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle.PlayerB"
             android:onClick="onClickButtonB"
-            android:rotation="180"
-            android:text="@string/button_label_one"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_one" />
 
         <TextView
             android:id="@+id/tv_score_b"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:gravity="center"
-            android:rotation="180"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/game_views_text_size"
-            android:textStyle="bold" />
+            style="@style/MyTextViewStyle"
+            android:rotation="@dimen/player_b_rotation" />
 
     </LinearLayout>
 
@@ -78,7 +42,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="4dp">
+        android:padding="@dimen/smallest_padding">
 
         <LinearLayout
             android:id="@+id/game_linear_layout"
@@ -98,61 +62,29 @@
     </LinearLayout>
 
     <!-- LinearLayout for Player A buttons and score TextView -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="@dimen/standard_padding">
+    <LinearLayout style="@style/MyPlayerLayoutStyle">
 
         <TextView
             android:id="@+id/tv_score_a"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/game_views_text_size"
-            android:textStyle="bold" />
+            style="@style/MyTextViewStyle" />
 
         <Button
             android:id="@+id/button_a_1"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle"
             android:onClick="onClickButtonA"
-            android:text="@string/button_label_one"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_one" />
 
         <Button
             android:id="@+id/button_a_2"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle"
             android:onClick="onClickButtonA"
-            android:text="@string/button_label_two"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_two" />
 
         <Button
             android:id="@+id/button_a_3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/game_button_height"
-            android:layout_marginLeft="@dimen/small_horizontal_margin"
-            android:layout_marginRight="@dimen/small_horizontal_margin"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
+            style="@style/MyGameButtonStyle"
             android:onClick="onClickButtonA"
-            android:text="@string/button_label_three"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/game_views_text_size" />
+            android:text="@string/button_label_three" />
 
     </LinearLayout>
 

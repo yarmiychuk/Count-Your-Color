@@ -17,30 +17,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/MySettingsTextViewStyle"
                 android:fontFamily="sans-serif-smallcaps"
-                android:gravity="center"
                 android:text="@string/app_name"
                 android:textColor="@color/colorAccent"
-                android:textSize="34sp" />
+                android:textSize="@dimen/settings_title_text_size" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
+                style="@style/MySettingsTextViewStyle"
+                android:layout_marginBottom="@dimen/small_margin"
                 android:text="@string/settings"
                 android:textColor="@android:color/white"
-                android:textSize="30sp" />
+                android:textSize="@dimen/settings_subtitle_text_size" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="@string/player_a"
-                android:textColor="@color/colorAccent"
-                android:textSize="22sp" />
+                style="@style/MySettingsNameTextViewStyle"
+                android:text="@string/player_a" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,34 +42,18 @@
 
                 <EditText
                     android:id="@+id/et_name_player_a"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/name_hint"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName|textCapWords"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="22sp" />
+                    style="@style/MyEditTextStyle" />
 
                 <TextView
                     android:id="@+id/tv_color_player_a"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/standard_margin"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:background="@color/colorAccent"
+                    style="@style/MyColorPickerTextViewStyle"
                     android:onClick="onClickSelectColor" />
+
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standard_margin"
-                android:gravity="start"
-                android:text="@string/player_b"
-                android:textColor="@color/colorAccent"
-                android:textSize="22sp" />
+                style="@style/MySettingsNameTextViewStyle"
+                android:text="@string/player_b" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,24 +63,13 @@
 
                 <EditText
                     android:id="@+id/et_name_player_b"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/name_hint"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPersonName|textCapWords"
-                    android:textColor="@color/colorWhite"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="22sp" />
+                    style="@style/MyEditTextStyle" />
 
                 <TextView
                     android:id="@+id/tv_color_player_b"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/standard_margin"
-                    android:layout_marginStart="@dimen/standard_margin"
-                    android:background="@color/colorAccent"
+                    style="@style/MyColorPickerTextViewStyle"
                     android:onClick="onClickSelectColor" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -117,38 +82,21 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            <TextView style="@style/MyTextViewAsDividerStyle" />
 
             <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="@dimen/settings_button_width"
-                android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/background_accent"
+                style="@style/MySettingsButtonStyle"
                 android:onClick="onClickResetSettings"
-                android:text="@string/reset"
-                android:textColor="@android:color/black" />
+                android:text="@string/reset" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            <TextView style="@style/MyTextViewAsDividerStyle" />
 
             <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="@dimen/settings_button_width"
-                android:layout_height="@dimen/menu_button_height"
-                android:background="@drawable/background_accent"
+                style="@style/MySettingsButtonStyle"
                 android:onClick="onclickDoneSettings"
-                android:text="@string/done"
-                android:textColor="@android:color/black" />
+                android:text="@string/done" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            <TextView style="@style/MyTextViewAsDividerStyle" />
 
         </LinearLayout>
 

@@ -70,6 +70,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Define views
+        initializeViews();
+        // Prepare GridView
+        initializeGridView();
+        // Set default game mode
+        mode = MODE_MENU;
+        // Hide keyboard if need
+        hideSoftKeyboard();
+    }
+
+    /**
+     * Define UI Views
+     */
+    private void initializeViews() {
         llMenu = findViewById(R.id.ll_game_menu);
         llGameName = findViewById(R.id.ll_game_name);
         llWin = findViewById(R.id.ll_game_win);
@@ -85,12 +98,6 @@ public class MainActivity extends AppCompatActivity {
         tvColorPlayerB = findViewById(R.id.tv_color_player_b);
         tvScoreA = findViewById(R.id.tv_score_a);
         tvScoreB = findViewById(R.id.tv_score_b);
-        // Prepare GridView
-        initializeGridView();
-        // Set default game mode
-        mode = MODE_MENU;
-        // Hide keyboard if need
-        hideSoftKeyboard();
     }
 
     @Override
@@ -443,6 +450,9 @@ public class MainActivity extends AppCompatActivity {
      * Initialize players names from settings or defaults
      */
     private void initializePlayersNames() {
+        if (namePlayerA.equals("") || isNameLikeDefault(namePlayerA)) {
+            namePlayerA = getDefaultPlayerName(colorPlayerA);
+        }
         if (namePlayerB.equals("") || isNameLikeDefault(namePlayerB)) {
             namePlayerB = getDefaultPlayerName(colorPlayerB);
         }
@@ -461,7 +471,7 @@ public class MainActivity extends AppCompatActivity {
      * @return default name of player
      */
     private String getDefaultPlayerName(int color) {
-        String name = "";
+        String name = getString(R.string.unknown);
         switch (color) {
             case COLOR_RED:
                 name = getString(R.string.red);

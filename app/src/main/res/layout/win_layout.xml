@@ -8,41 +8,22 @@
     android:padding="@dimen/standard_padding">
 
     <!-- "End of game" message for player B -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/background_white"
-        android:padding="8dp">
+    <RelativeLayout style="@style/MyRelativeLayoutStyle">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:rotation="180"
-            android:text="@string/click_finish"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            style="@style/MyWinTextViewStyle.Continue"
+            android:rotation="@dimen/player_b_rotation" />
 
         <TextView
             android:id="@+id/tv_game_result_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/MyWinTextViewStyle.Win"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:rotation="180"
-            android:text="@string/you_win"
-            android:textSize="50sp" />
+            android:rotation="@dimen/player_b_rotation" />
 
         <TextView
             android:id="@+id/tv_game_score_b"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:rotation="180"
-            android:text="@string/your_score"
-            android:textSize="40sp" />
+            style="@style/MyWinTextViewStyle.Score"
+            android:rotation="@dimen/player_b_rotation" />
 
     </RelativeLayout>
 
@@ -57,68 +38,32 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:rotation="180"
-            android:text="@string/finish"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            style="@style/MyFinishTextViewStyle"
+            android:rotation="@dimen/player_b_rotation" />
 
         <TextView
-            android:layout_width="1dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/divider_width"
+            android:layout_height="@dimen/menu_button_height"
             android:background="@android:color/black" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/finish"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+        <TextView style="@style/MyFinishTextViewStyle" />
 
     </LinearLayout>
 
     <!-- "End of game" message for player A -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/background_white"
-        android:padding="8dp">
+    <RelativeLayout style="@style/MyRelativeLayoutStyle">
 
         <TextView
             android:id="@+id/tv_game_result_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/you_win"
-            android:textSize="50sp" />
+            style="@style/MyWinTextViewStyle.Win" />
 
         <TextView
             android:id="@+id/tv_game_score_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/your_score"
-            android:textSize="40sp" />
+            style="@style/MyWinTextViewStyle.Score" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="@string/click_finish"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            style="@style/MyWinTextViewStyle.Continue"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
 </LinearLayout>
